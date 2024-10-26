@@ -61,5 +61,5 @@ class Server:
         val = 0
         if obj['page_size'] == val:
             val = 1
-        obj['total_pages'] = int(19419 / page_size) + val
+        obj['total_pages'] = math.ceil(19419 / page_size)
         return obj
