@@ -44,6 +44,8 @@ class Server:
         return dataset[start:end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+        """method that takes the same arguments
+        (and defaults) as get_page and returns a dict """
         dataset = self.dataset()
         get_page = self.get_page(page, page_size)
         obj = {}
