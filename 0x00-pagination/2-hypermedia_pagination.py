@@ -46,22 +46,13 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """method that takes the same arguments
         (and defaults) as get_page and returns a dict """
-        dataset = self.dataset()
+        start, end = index_range(page, page_size)
         get_page: List[List] = self.get_page(page, page_size)
         obj: Dict = {}
         obj['page_size'] = len(get_page)
         obj['page'] = page
         obj['data'] = get_page
-        next_page = None
-        if 0 != len(get_page):
-            next_page = page + 1
-        obj['next_page'] = next_page
-        prev_page = None
-        if page - 1 > 0:
-            prev_page = page - 1
-        obj['prev_page'] = prev_page
-        val = 0
-        if obj['page_size'] == val:
-            val = 1
-        obj['total_pages'] = math.ceil(19419 / page_size)
+        obj['next_page'] = page + 1 if end < len(self.__dataset) else None
+        obj['prev_page'] = page - 1 if start > 0 else None
+        obj['total_pages'] = math.ceil(len(self.__dataset) / page_size)
         return obj
