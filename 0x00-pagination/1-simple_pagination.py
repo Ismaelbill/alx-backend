@@ -40,12 +40,4 @@ class Server:
         vals: Tuple = index_range(page=page, page_size=page_size)
         start: int = vals[0]
         end: int = vals[1]
-        arr: List = []
-        try:
-            while start < end:
-                arr.append(self.dataset()[start])
-                start += 1
-        except IndexError:
-            pass
-        finally:
-            return arr
+        return self.dataset()[start:end]
