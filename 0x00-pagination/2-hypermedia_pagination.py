@@ -47,8 +47,8 @@ class Server:
         """method that takes the same arguments
         (and defaults) as get_page and returns a dict """
         dataset = self.dataset()
-        get_page = self.get_page(page, page_size)
-        obj = {}
+        get_page: List[List] = self.get_page(page, page_size)
+        obj: Dict = {}
         obj['page_size'] = len(get_page)
         obj['page'] = page
         obj['data'] = get_page
