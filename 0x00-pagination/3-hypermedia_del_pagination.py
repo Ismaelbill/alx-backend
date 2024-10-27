@@ -42,6 +42,7 @@ class Server:
     def get_hyper_index(self, index: int | None = None,
                         page_size: int = 10) -> Dict:
         """return a dictionary with the following key-value pairs"""
+
         if index is None:
             index = 0
         index_data = self.__indexed_dataset
@@ -58,6 +59,6 @@ class Server:
         return {
             'index': index,
             'data': data,
-            'page_size': page_size,
+            'page_size': len(data),
             'next_index': curr_index,
         }
