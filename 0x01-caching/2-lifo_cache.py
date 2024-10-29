@@ -16,14 +16,15 @@ class LIFOCache(BaseCaching):
         """ assign to the dictionary
         self.cache_data the item value for the key key"""
         obj = self.cache_data
+        if not (key and item):
+            return
         if key in obj:
             del obj[key]
         if len(obj) >= BaseCaching.MAX_ITEMS:
             x = list(obj.keys())[-1]
             del obj[x]
             print('DISCARD: {}'.format(x))
-        if key and item:
-            obj[key] = item
+        obj[key] = item
 
     def get(self, key):
         """ return the value in self.cache_data
