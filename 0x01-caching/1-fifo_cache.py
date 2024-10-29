@@ -20,8 +20,8 @@ class FIFOCache(BaseCaching):
             obj[key] = item
         if len(obj) > BaseCaching.MAX_ITEMS:
             x = list(obj.keys())[0]
-            print('DISCARD: {}'.format(x))
             del obj[x]
+            print('DISCARD: {}'.format(x))
 
     def get(self, key):
         """ return the value in self.cache_data
