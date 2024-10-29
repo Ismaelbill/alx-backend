@@ -15,8 +15,8 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """ assign to the dictionary
         self.cache_data the item value for the key key"""
+        obj = self.cache_data
         if key and item:
-            obj = self.cache_data
             obj[key] = item
         if len(obj) > BaseCaching.MAX_ITEMS:
             x = list(obj.keys())[0]
