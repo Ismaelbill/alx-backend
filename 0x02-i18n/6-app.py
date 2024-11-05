@@ -56,11 +56,13 @@ def get_locale():
     if locale in Config.LANGUAGES:
         return locale
 
+    if g.get('user') and g.user.get('locale') in Config.LANGUAGES:
+        return g.user['locale']
+
     head_loc = request.headers.get('locale', '')
     if head_loc in Config.LANGUAGES:
         return head_loc
-    if g.user and g.user['locale'] in Config.LANGUAGES:
-        return g.user['locale']
+
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
