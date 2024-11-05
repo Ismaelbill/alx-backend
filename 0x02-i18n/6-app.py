@@ -57,9 +57,9 @@ def get_locale():
         return locale
 
     head_loc = request.headers.get('locale', '')
-    if head_loc in app.config['LANGUAGES']:
+    if head_loc in Config.LANGUAGES:
         return head_loc
-    elif g.user and g.user['locale'] in app.config['LANGUAGES']:
+    if g.user and g.user['locale'] in Config.LANGUAGES:
         return g.user['locale']
     return request.accept_languages.best_match(Config.LANGUAGES)
 
