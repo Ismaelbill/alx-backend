@@ -39,10 +39,10 @@ users = {
 }
 
 
-
-
-
 def get_user():
+    """
+    returns a user dictionary or None
+    """
     id = request.args.get('login_as')
     if id:
         return users.get(int(id), None)
@@ -50,6 +50,9 @@ def get_user():
 
 @app.before_request
 def before_request():
+    """
+    finds a user if any, and set it
+    as a global on flask.g.user"""
     dct = get_user()
     if dct:
         g.user = dct
