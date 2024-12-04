@@ -12,5 +12,3 @@ client.on('error', (err) =>
     `Redis client not connected to the server: Error: Redis connection to ${err.address}:${err.port} failed - ${err.message}`
   )
 );
-
-client.connect();
